@@ -77,5 +77,29 @@ namespace WindowsFormsApplication_15
                 x += step;
             }
         }
+
+        private void buttonDrawFunction_Click(object sender, EventArgs e)
+        {
+            // Get graphics object
+            Graphics g = this.CreateGraphics();
+            Pen functionPen = new Pen(Color.Red, 2);
+
+            // Define graph area
+            int graphWidth = 300;
+            int graphHeight = 200;
+            int xCenter = this.ClientSize.Width / 2;
+            int yCenter = this.ClientSize.Height / 2;
+
+            // Clear previous drawings
+            g.Clear(this.BackColor);
+
+            // Draw function y = cos(x) * 50
+            for (int x = -graphWidth / 2; x < graphWidth / 2; x++)
+            {
+                int y = (int)(Math.Cos(x * 0.1) * 50);
+                g.DrawEllipse(functionPen, xCenter + x, yCenter - y, 2, 2);
+            }
+        }
+
     }
 }
